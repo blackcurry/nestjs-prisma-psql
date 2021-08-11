@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && npx prisma generate",
+    "release": "npx prisma migrate deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -19,6 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "mig": "npx prisma migrate dev --name",
+    "dep": "npx prisma migrate deploy",
     "gen": "npx prisma generate",
     "prestart:prod": "rimraf dist && npm run build",
     "web": "npm run start:prod"
